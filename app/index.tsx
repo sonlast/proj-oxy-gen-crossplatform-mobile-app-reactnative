@@ -29,6 +29,7 @@ export default function Index() {
       <TouchableHighlight style={[
         styles.button,
         {
+          paddingVertical: click ? 140 : 115,
           backgroundColor: click ? "#ff0000" : "#82888f",
         },
       ]}
@@ -39,12 +40,15 @@ export default function Index() {
         disabled={click ? true : false}
       >
         <Animated.View>
-          <Text style={[
-            styles.insideText,
-            {
-              color: click ? "#ffffff" : "#ffffff"
-            }
-          ]}>{click ? count : "Start Breathing Exercise"}</Text>
+          {click
+            ? <Text style={styles.insideText}>{count}</Text>
+            : <Text style={[
+              styles.insideText,
+              {
+                color: "#ffffff"
+              }
+            ]}>Start Breathing Exercise</Text>
+          }
         </Animated.View>
       </TouchableHighlight>
     </View>
@@ -59,7 +63,6 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingHorizontal: 95,
-    paddingVertical: 115,
     borderRadius: 150,
     borderColor: "#000000",
     borderWidth: 5,
